@@ -3,9 +3,32 @@
 // 1. the action (info about what happened)
 // 2. copy of the current state
 
+function postComments(state = [], action) {
+  switch(action.type) {
+    case 'ADD_COMMENT':
+    // return the new state with teh new comment
+      return [...state, {
+        user: action.author,
+        text: action.comment
+      }];
+    case 'REMOVE_COMMENT':
+      console.log('Removing a comment!');
+      return state;
+    default: 
+      return state;
+  }
+  return state;
+}
+
 function comments(state = [], action) {
-  // do stuff
-  console.log(state, action)
+  if(typeof action.postId !== 'undefined') {
+    return {
+      // take the current state
+      ...state,
+      // overwrite this post with a new one
+      [action.postId]: postComments(state[action.postId], action)
+    }
+  }
   return state;
 }
 

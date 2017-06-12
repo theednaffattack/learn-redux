@@ -9,10 +9,13 @@ export function increment(index) {
 }
 // add comment
 export function addComment(postId, author, comment) {
-  type: 'ADD_COMMENT',
-  postId,
-  author,
-  comment
+  console.log('Dispatching ADD COMMENT');
+  return {
+    type: 'ADD_COMMENT',
+    postId,
+    author,
+    comment
+  }
 }
 // remove comment
 export function removeComment(postId, index) {
