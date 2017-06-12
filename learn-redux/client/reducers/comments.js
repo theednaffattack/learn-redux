@@ -12,8 +12,10 @@ function postComments(state = [], action) {
         text: action.comment
       }];
     case 'REMOVE_COMMENT':
-      console.log('Removing a comment!');
-      return state;
+      return [
+        ...state.slice(0, action.i),
+        ...state.slice(action.i + 1)
+      ];
     default: 
       return state;
   }
@@ -22,6 +24,7 @@ function postComments(state = [], action) {
 
 function comments(state = [], action) {
   if(typeof action.postId !== 'undefined') {
+    console.log('Post ID undefined')
     return {
       // take the current state
       ...state,

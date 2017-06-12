@@ -18,7 +18,7 @@ class Comments extends React.Component {
   render() {
     return(
       <div className="comments">
-      { this.props.postComments.map((comment, i) => <Comment {...this.props} comment={comment} key={i} />) }
+      { this.props.postComments.map((comment, i) => <Comment {...this.props} comment={comment} key={i} i={i} />) }
 
         <form ref="commentForm" className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" ref="author" placeholder="author" />
